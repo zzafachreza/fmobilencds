@@ -7,7 +7,7 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import { showMessage } from 'react-native-flash-message';
 import Sound from 'react-native-sound';
 import { Icon } from 'react-native-elements/dist/icons/Icon';
-import { MyButton, MyGap, MyHeader, MyInput, MyPicker } from '../../components';
+import { MyButton, MyCalendar, MyGap, MyHeader, MyInput, MyPicker } from '../../components';
 import { useIsFocused } from '@react-navigation/native';
 import axios from 'axios';
 import DatePicker from 'react-native-datepicker'
@@ -240,17 +240,63 @@ export default function AAInput({ navigation, route }) {
                         ]} />
                     </View>
                 </View> */}
+
+                <MyCalendar label="Tanggal" iconname="calendar" onDateChange={x => {
+                    setKirim({
+                        ...kirim,
+                        tanggal: x
+                    })
+                }} />
+                <MyGap jarak={10} />
                 <MyPicker label="Nelayan" onValueChange={x => setKirim({
                     ...kirim,
                     fid_nelayan: x
                 })} iconname="person" data={nelayan} />
 
                 <MyGap jarak={10} />
-                <MyCek label="Apakah Ada Keluhan ?" nomor={1} /><MyGap jarak={10} />
-                <MyCek label="Ada Gangguan Pendengaran ?" nomor={2} /><MyGap jarak={10} />
-                <MyCek label="Ada GAngguna Penglihatan ?" nomor={3} /><MyGap jarak={10} />
-                <MyCek label="Ada Gangguan Mental ?" nomor={4} /><MyGap jarak={10} />
-                <MyCek label="Ada Gannguan Lainnya ?" nomor={5} /><MyGap jarak={10} />
+                <MyCek label="Apakah Ada Keluhan kesehatan saat ini ?" nomor={1} /><MyGap jarak={10} />
+
+                {pilih[1].ya &&
+                    <View style={{}}>
+                        <MyInput iconname="create" label="Gangguan Pendengaran" onChangeText={x => {
+                            setKirim({
+                                ...kirim,
+                                p2: x
+                            })
+                        }} />
+                        <MyGap jarak={10} />
+                        <MyInput iconname="create" label=" Gangguan Penglihatan" onChangeText={x => {
+                            setKirim({
+                                ...kirim,
+                                p3: x
+                            })
+                        }} />
+                        <MyGap jarak={10} />
+                        <MyInput iconname="create" label="Gangguan Mental" onChangeText={x => {
+                            setKirim({
+                                ...kirim,
+                                p4: x
+                            })
+                        }} />
+                        <MyGap jarak={10} />
+                        <MyInput iconname="create" label="Gangguan Lainnya" onChangeText={x => {
+                            setKirim({
+                                ...kirim,
+                                p5: x
+                            })
+                        }} />
+                    </View>
+
+                }
+
+
+                {!pilih[1].ya && <>
+                    <MyCek label="Ada Gangguan Pendengaran ?" nomor={2} /><MyGap jarak={10} />
+                    <MyCek label="Ada Gangguan Penglihatan ?" nomor={3} /><MyGap jarak={10} />
+                    <MyCek label="Ada Gangguan Mental ?" nomor={4} /><MyGap jarak={10} />
+                    <MyCek label="Ada Gangguan Lainnya ?" nomor={5} /><MyGap jarak={10} />
+                </>}
+
 
 
 
@@ -292,7 +338,11 @@ export default function AAInput({ navigation, route }) {
                 </View>
                 <MyGap jarak={10} />
                 <MyInput iconname='create' keyboardType='number-pad' label='Hemoglobin (gr/dl)' onChangeText={x => { setKirim({ ...kirim, hemoglobin: x }) }} /><MyGap jarak={10} />
-                <MyInput iconname='create' keyboardType='number-pad' label='Gula Darah (mg/dl)' onChangeText={x => { setKirim({ ...kirim, gula_darah: x }) }} /><MyGap jarak={10} />
+                <MyInput iconname='create' keyboardType='number-pad' label='Gula Darah Sewaktu (mg/dl)' onChangeText={x => { setKirim({ ...kirim, gula_darah: x }) }} /><MyGap jarak={10} />
+
+                <MyInput iconname='create' keyboardType='number-pad' label='Kolesterol (mg/dl)' onChangeText={x => { setKirim({ ...kirim, koles: x }) }} /><MyGap jarak={10} />
+                <MyInput iconname='create' keyboardType='number-pad' label='Asam Urat Darah (mg/dl)' onChangeText={x => { setKirim({ ...kirim, asam_urat: x }) }} /><MyGap jarak={10} />
+                <MyInput iconname='create' keyboardType='number-pad' label='Trigliserida (mg/dl)' onChangeText={x => { setKirim({ ...kirim, trigli: x }) }} /><MyGap jarak={10} />
 
 
 

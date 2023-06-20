@@ -126,7 +126,7 @@ export default function Home({ navigation }) {
 
 
         <MyList onPress={() => navigation.navigate('Nelayan', user)} img={require('../../assets/A1.png')} judul="Biodata Nelayan" desc="Input biodata nelayan yang belum terdaftar" />
-        <MyList onPress={() => navigation.navigate('AAInput', user)} img={require('../../assets/A2.png')} judul="Skrining" desc="input skring nelayan IMT, TD, Lab Pemkab & kondisi kesehatan" />
+        <MyList onPress={() => navigation.navigate('AAInput', user)} img={require('../../assets/A2.png')} judul="Skrining" desc="input skring nelayan IMT, TD, Pemeriksaan Laboratorium & kondisi kesehatan" />
         {/* <MyList img={require('../../assets/A3.png')} judul="Skrining II" desc="input skring nelayan kondisi kesehatan saat ini" /> */}
         <MyList img={require('../../assets/A4.png')} judul="Juknis Pengisian" desc="Pedoman cara pengisian informasi data" />
 

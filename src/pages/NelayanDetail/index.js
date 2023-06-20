@@ -105,7 +105,7 @@ export default function NelayanDetail({ navigation, route }) {
                     <MyDataList label="Nama" value={itemHeader.nama_nelayan} />
                     <MyDataList label="Usia" value={itemHeader.usia_nelayan} />
                     <MyDataList label="Jenis Kelamin" value={itemHeader.jenis_kelamin_nelayan} />
-                    <MyDataList label="Jenis Nelayan" value={itemHeader.jenis_nelayan} />
+                    <MyDataList label="Jenis Nelayan" value={itemHeader.jenis_nelayan.substring(0, itemHeader.jenis_nelayan.length - 1)} />
 
                 </View>
 
@@ -123,8 +123,8 @@ export default function NelayanDetail({ navigation, route }) {
                         marginBottom: 10,
                     }}>Data Aktifitas Nelayan</Text>
 
-                    <MyDataList label="Frekuensi Menyelam / Minggu" value={itemHeader.frek_menyelam + 'x'} />
-                    <MyDataList label="Frekuensi Bekerja / Menyelam" value={itemHeader.frek_bekerja + 'x'} />
+                    <MyDataList label="Frekuensi Menyelam / Minggu" value={itemHeader.frek_menyelam} />
+                    <MyDataList label="Frekuensi Bekerja" value={itemHeader.frek_bekerja} />
                     <MyDataList label="Kedalaman Menyelam" value={itemHeader.kedalaman_menyelam + ' Meter'} />
 
                 </View>
@@ -142,14 +142,16 @@ export default function NelayanDetail({ navigation, route }) {
                         borderBottomColor: colors.border,
                         marginBottom: 10,
                     }}>Data Riwayat Penyakit</Text>
-                    <MyDataList label="POK" value={itemHeader.riw_pok} />
+                    <MyDataList label="Penyakit Jantung" value={itemHeader.riw_pok} />
                     <MyDataList label="TB" value={itemHeader.riw_tb} />
-                    <MyDataList label="Thalasemio" value={itemHeader.riw_thalasemio} />
+                    <MyDataList label="Thalasemia" value={itemHeader.riw_thalasemio} />
                     <MyDataList label="Kanker" value={itemHeader.riw_kanker} />
                     <MyDataList label="DM" value={itemHeader.riw_dm} />
                     <MyDataList label="Lupus" value={itemHeader.riw_lupus} />
-                    <MyDataList label="Ppok" value={itemHeader.riw_ppok} />
+                    <MyDataList label="PPOK" value={itemHeader.riw_ppok} />
                     <MyDataList label="Penyakit Lainnya" value={itemHeader.riw_lain} />
+                    <MyDataList label="Hipertensi" value={itemHeader.riw_hipertensi} />
+                    <MyDataList label="Penyakit Ginjal" value={itemHeader.riw_ginjal} />
 
 
                 </View>
@@ -416,6 +418,43 @@ export default function NelayanDetail({ navigation, route }) {
                                     color: item.hgula_darah == 'Normal' ? colors.dua : item.hgula_darah == 'Hipoglikemi' ? colors.satu : colors.tiga
                                 }}>{item.hgula_darah}</Text>
                             </View>
+                        </View>
+                        <View style={{
+                            flexDirection: 'row'
+                        }}>
+                            <View style={{
+                                flex: 1,
+                            }}>
+                                <MyDataList label="Kolesterol" value={item.koles + ' mmHg'} />
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    color: item.hkoles == 'Normal' ? colors.dua : colors.tiga
+                                }}>{item.hkoles}</Text>
+                            </View>
+                            <View style={{
+                                flex: 1,
+                            }}>
+                                <MyDataList label="Asam Urat Darah" value={item.asam_urat + ' mmHg'} />
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    color: item.hasam_urat == 'Normal' ? colors.dua : colors.tiga
+                                }}>{item.hasam_urat}</Text>
+                            </View>
+                        </View>
+
+                        <View style={{
+                            flexDirection: 'row'
+                        }}>
+                            <View style={{
+                                flex: 1,
+                            }}>
+                                <MyDataList label="Trigliserida" value={item.trigli + ' mmHg'} />
+                                <Text style={{
+                                    fontFamily: fonts.secondary[600],
+                                    color: item.htrigli == 'Normal' ? colors.dua : colors.tiga
+                                }}>{item.htrigli}</Text>
+                            </View>
+
                         </View>
 
                     </View>

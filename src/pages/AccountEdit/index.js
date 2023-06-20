@@ -9,6 +9,7 @@ import {
     Alert,
     ActivityIndicator,
     ScrollView,
+    PermissionsAndroid,
 } from 'react-native';
 import { windowWidth, fonts } from '../../utils/fonts';
 import { apiURL, getData, MYAPP, storeData, urlAPI, urlApp, urlAvatar } from '../../utils/localStorage';
@@ -42,7 +43,32 @@ export default function AccountEdit({ navigation, route }) {
         })
     }
 
+    const requestCameraPermission = async () => {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: 'Cool Photo App Camera Permission',
+                    message:
+                        'Cool Photo App needs access to your camera ' +
+                        'so you can take awesome pictures.',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                console.log('You can use the camera');
+            } else {
+                console.log('Camera permission denied');
+            }
+        } catch (err) {
+            console.warn(err);
+        }
+    };
+
     useEffect(() => {
+        requestCameraPermission();
         setKirim({
             ...kirim,
             newfoto_user: null
@@ -65,7 +91,7 @@ export default function AccountEdit({ navigation, route }) {
                     <TouchableOpacity onPress={() => {
 
 
-                        launchImageLibrary({
+                        launchCamera({
                             includeBase64: true,
                             quality: 1,
                             mediaType: "photo",

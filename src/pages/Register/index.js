@@ -60,7 +60,7 @@ export default function Register({ navigation }) {
         nama_lengkap: '',
         desa: '',
         tanggal_lahir: '',
-        lavel: 'Kader',
+        level: 'Kader',
         alamat: '',
         gender: 'Laki-laki',
     });
@@ -120,7 +120,7 @@ export default function Register({ navigation }) {
                         })
                     } else {
                         Alert.alert(MYAPP, res.data.message);
-                        navigation.goBack();
+                        // navigation.goBack();
                     }
 
 

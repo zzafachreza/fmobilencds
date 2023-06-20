@@ -53,21 +53,25 @@ export default function Nelayan({ navigation, route }) {
                 flexDirection: 'row',
                 overflow: 'hidden'
             }}>
+                <View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: 5,
+                }}>
+                    <Image source={{
+                        uri: item.foto_nelayan
+                    }} style={{
+                        width: 80,
+                        height: 120,
+                        borderRadius: 10
+                    }} />
+                </View>
 
                 <View style={{
                     flex: 1,
                     padding: 10,
                 }}>
-                    <Text style={{
-                        width: windowWidth / 2,
-                        textAlign: 'center',
-                        borderRadius: 5,
-                        marginBottom: 5,
-                        color: colors.white,
-                        fontFamily: fonts.secondary[400],
-                        fontSize: windowWidth / 28,
-                        backgroundColor: colors.black
-                    }}>{item.jenis_nelayan}</Text>
+
                     <View style={{
                         flexDirection: 'row'
                     }}>
@@ -125,6 +129,25 @@ export default function Nelayan({ navigation, route }) {
                             fontFamily: fonts.secondary[400],
                             fontSize: windowWidth / 28
                         }}>{item.alamat_nelayan}</Text>
+                    </View>
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <Text style={{
+                            flex: 0.6,
+                            fontFamily: fonts.secondary[600],
+                            fontSize: windowWidth / 28
+                        }}>Jenis</Text>
+                        <Text style={{
+                            flex: 0.1,
+                            fontFamily: fonts.secondary[600],
+                            fontSize: windowWidth / 28
+                        }}>:</Text>
+                        <Text style={{
+                            flex: 1,
+                            fontFamily: fonts.secondary[400],
+                            fontSize: windowWidth / 28
+                        }}>{item.jenis_nelayan.toString().substring(0, item.jenis_nelayan.length - 1)}</Text>
                     </View>
 
 

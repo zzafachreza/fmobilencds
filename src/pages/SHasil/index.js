@@ -300,7 +300,7 @@ export default function AAInput({ navigation, route }) {
                     textAlign: 'center',
                     fontFamily: fonts.secondary[600],
                     fontSize: 15,
-                }}>Lab Pemkab</Text>
+                }}>Pemeriksaan Laboratorium</Text>
                 <View style={{
                     borderWidth: 1,
                     padding: 10,
@@ -330,6 +330,43 @@ export default function AAInput({ navigation, route }) {
                         </View>
                     </View>
 
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <View style={{
+                            flex: 1,
+                        }}>
+                            <MyDataList label="Kolesterol" value={item.koles + ' mmHg'} />
+                            <Text style={{
+                                fontFamily: fonts.secondary[600],
+                                color: item.hkoles == 'Normal' ? colors.dua : colors.tiga
+                            }}>{item.hkoles}</Text>
+                        </View>
+                        <View style={{
+                            flex: 1,
+                        }}>
+                            <MyDataList label="Asam Urat Darah" value={item.asam_urat + ' mmHg'} />
+                            <Text style={{
+                                fontFamily: fonts.secondary[600],
+                                color: item.hasam_urat == 'Normal' ? colors.dua : colors.tiga
+                            }}>{item.hasam_urat}</Text>
+                        </View>
+                    </View>
+
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        <View style={{
+                            flex: 1,
+                        }}>
+                            <MyDataList label="Trigliserida" value={item.trigli + ' mmHg'} />
+                            <Text style={{
+                                fontFamily: fonts.secondary[600],
+                                color: item.htrigli == 'Normal' ? colors.dua : colors.tiga
+                            }}>{item.htrigli}</Text>
+                        </View>
+
+                    </View>
                 </View>
 
 

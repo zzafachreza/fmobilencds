@@ -3,12 +3,13 @@ import { StyleSheet, Text, View, Picker } from 'react-native';
 import { Icon, ListItem, Button } from 'react-native-elements';
 import { colors } from '../../utils/colors';
 import { fonts } from '../../utils/fonts';
+import DatePicker from 'react-native-datepicker'
 
-export default function MyPicker({
+
+export default function MyCalendar({
   label,
   iconname,
-  onValueChange,
-  onChangeText,
+  onDateChange,
   value,
   keyboardType,
   secureTextEntry,
@@ -25,7 +26,7 @@ export default function MyPicker({
         style={{
           flexDirection: 'row',
           alignItems: 'center',
-          paddingVertical: 2,
+          paddingVertical: 0,
         }}>
         <Icon type="ionicon" name={iconname} color={colors.black} size={16} />
         <Text
@@ -47,12 +48,31 @@ export default function MyPicker({
         fontFamily: fonts.secondary[600],
         borderColor: colors.primary,
       }}>
-        <Picker style={{ height: 48, transform: [{ scale: 0.9 }] }}
-          selectedValue={value} onValueChange={onValueChange}>
-          {data.map(item => {
-            return <Picker.Item textStyle={{ fontSize: 12 }} value={item.value} label={item.label} />;
-          })}
-        </Picker>
+        <DatePicker
+          style={{ width: '100%', height: 45, }}
+          date={value}
+          mode="date"
+          placeholder={placeholder}
+          showIcon={false}
+          format="YYYY-MM-DD"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateIcon: {
+              position: 'absolute',
+              left: 0,
+              top: 4,
+              marginLeft: 0
+            },
+            dateInput: {
+              fontFamily: fonts.secondary[600],
+              textAlign: 'left',
+              borderWidth: 0,
+            }
+            // ... You can check the source to find the other keys.
+          }}
+          onDateChange={onDateChange}
+        />
       </View>
     </>
   );
